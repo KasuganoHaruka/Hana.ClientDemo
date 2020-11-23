@@ -27,7 +27,7 @@ namespace ClientDemo.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "FindAllPolicy")]
+        //[Authorize(Policy = "FindAllPolicy")]
         [Route("FindAll")]
         public async Task<IActionResult> FindAll() 
         {
@@ -40,7 +40,7 @@ namespace ClientDemo.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "FindUserPolicy")]
+        //[Authorize(Policy = "FindUserPolicy")]
         [Route("FindUser")]
         public async Task<User> FindUser(int id)
         {

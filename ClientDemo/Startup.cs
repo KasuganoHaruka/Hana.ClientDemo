@@ -37,27 +37,27 @@ namespace ClientDemo
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ClientDemo", Version = "v1" });
             });
 
-            services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = "http://localhost:15201";    //id4的地址
-                    options.ApiName = "api1";
-                    options.RequireHttpsMetadata = false;//如果不使用Https，则需要配置这个
-                });
-            services.AddAuthorization(options =>
-            {
-                //基于策略授权
-                options.AddPolicy("FindUserPolicy", builder =>
-                {
-                    //客户端Scope中包含api1.weather.scope才能访问
-                    builder.RequireScope("api1.finduser.scope");
-                });
-                options.AddPolicy("FindAllPolicy", builder =>
-                {
-                    //客户端Scope中包含api1.test.scope才能访问
-                    builder.RequireScope("api1.findall.scope");
-                });
-            });
+            //services.AddAuthentication("Bearer")
+            //    .AddIdentityServerAuthentication(options =>
+            //    {
+            //        options.Authority = "http://localhost:15201";    //id4的地址
+            //        options.ApiName = "api1";
+            //        options.RequireHttpsMetadata = false;//如果不使用Https，则需要配置这个
+            //    });
+            //services.AddAuthorization(options =>
+            //{
+            //    //基于策略授权
+            //    options.AddPolicy("FindUserPolicy", builder =>
+            //    {
+            //        //客户端Scope中包含api1.weather.scope才能访问
+            //        builder.RequireScope("api1.finduser.scope");
+            //    });
+            //    options.AddPolicy("FindAllPolicy", builder =>
+            //    {
+            //        //客户端Scope中包含api1.test.scope才能访问
+            //        builder.RequireScope("api1.findall.scope");
+            //    });
+            //});
 
         }
 
@@ -75,7 +75,7 @@ namespace ClientDemo
 
             app.UseRouting();
 
-            app.UseAuthentication();    //鉴权
+            //app.UseAuthentication();    //鉴权
             app.UseAuthorization();     //授权
 
             app.UseEndpoints(endpoints =>
